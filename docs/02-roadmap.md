@@ -1,6 +1,6 @@
 # Roadmap
 
-The MTG Project is built in five phases. Each one is a coherent slice of work that produces a meaningful product on its own — if the project stops at the end of any phase, what exists is still useful, not a half-finished feature stranded mid-build.
+The MTG Project is built in five phases. Each one is a coherent slice of work that produces a meaningful product on its own — if the project stops at the end of any phase, what exists is still useful, not a half-finished feature stranded mid-build. Phase 1 is large enough that it ships in two deployable stages (1A and 1B); the other four phases each ship as a single unit.
 
 The order is deliberately inward-out: build the core for one user (me) first, then make it teachable, then make it shareable. Features that touch the outside world — public access, OCR, multi-provider AI — sit at the end on purpose.
 
@@ -12,21 +12,37 @@ For the reasoning behind every tool used across these phases, see [`03-tech-stac
 
 **Goal:** A working personal database of Magic cards with my collection loaded into it, browseable through a calm, filter-first interface.
 
-**Ships in this phase:**
+Phase 1 ships in two deployable stages. **1A** is the lean MVP — bare-bones but genuinely *my* product, online and usable. **1B** is the polish and safety-net pass that turns 1A into a robust, tested product worth standing on for the rest of the build. Both stages produce a usable, deployed thing on their own; the 1A → 1B step is an upgrade in place, not a re-launch.
 
-- **Scryfall ingest pipeline.** A scheduled job that downloads Scryfall's bulk data file, parses it, and upserts into local Postgres tables. Designed to handle Scryfall's actual data shape — split cards, transform cards, modal double-faced cards — not just the happy path.
+### Phase 1A — *"It's mine, and it's online."*
+
+**Goal:** A deployed, authenticated browser of my Moxfield-imported collection, backed by Scryfall data, navigated through filters.
+
+**Ships in this stage:**
+
 - **Full database schema.** Cards, printings, sets, collection entries, users. Indexed for the queries the rest of the app will actually run.
+- **Scryfall ingest pipeline.** A scheduled job that downloads Scryfall's bulk data file, parses it, and upserts into local Postgres tables. Designed to handle Scryfall's actual data shape — split cards, transform cards, modal double-faced cards — not just the happy path.
 - **Collection management.** CSV import in Moxfield's export format, so I don't have to retype my collection. Manual add, remove, and quantity editing. Tags or notes per card if scope allows.
 - **Filter-first card browsing.** The default state is empty. Filters add constraints. No infinite-scroll wall of every card ever printed.
-- **Theme architecture scaffolding.** CSS variables for both palettes, even though only dark ships in this phase. Light theme is a Phase 4 deliverable, but the architecture is in place from day one so Phase 4 becomes a palette swap, not a refactor.
-- **Authentication.** Supabase auth. Single user to start (me); the data model already supports multiple users for later.
-- **Testing infrastructure.** Vitest + React Testing Library configured and in active use, with enough initial coverage that Phase 2 has somewhere to add tests rather than bolting testing on after the fact.
+- **Authentication.** Supabase auth. Single user to start (me); the data model already supports multiple users for later. In 1A this is non-negotiable — personal collection data on a live deployment without auth would be public to anyone with the URL.
 
-**Explicitly not in this phase:** Deck building. AI. Tutor mode. Light theme styling. OCR. Multi-user features beyond schema-level support.
+**Definition of done:** I can log in to a live Vercel deployment, import my Moxfield CSV, and browse my collection through filters. The Scryfall ingest runs on a schedule.
 
-**Why this phase boundary:** You can't build a deck-builder, an AI assistant, or a tutor mode without a database of cards underneath. Phase 1 is the foundation everything else stands on. It also produces something genuinely useful on its own: a calm, searchable view of my real collection.
+### Phase 1B — *"It's polished, secured, and tested."*
 
-**Definition of done:** I can import my Moxfield CSV, browse my collection through filters, and the data refreshes from Scryfall on a schedule. Test infrastructure runs in CI on every commit. The dark theme is polished and accessibility-audited. Public deployment to Vercel is live.
+**Goal:** The same product as 1A, with the testing safety net, theme scaffolding, and visual polish that the rest of the build will lean on.
+
+**Ships in this stage:**
+
+- **Theme architecture scaffolding.** CSS variables for both palettes, even though only dark ships in this stage. Light theme is a Phase 4 deliverable, but the architecture is in place from 1B on so Phase 4 becomes a palette swap, not a refactor.
+- **Testing infrastructure.** Vitest + React Testing Library configured and in active use, with enough initial coverage that Phase 2 has somewhere to add tests rather than bolting testing on after the fact. CI runs the suite on every commit.
+- **Polished dark theme + accessibility audit.** The candlelit palette tuned for contrast, hierarchy, and accessibility — not just "it works," but "it feels right and meets WCAG."
+
+**Definition of done:** Test infrastructure runs in CI on every commit. The dark theme is polished and accessibility-audited. The 1A deployment is upgraded in place — same product, sturdier underneath.
+
+**Explicitly not in Phase 1 (either stage):** Deck building. AI. Tutor mode. Light theme styling. OCR. Multi-user features beyond schema-level support.
+
+**Why this phase boundary:** You can't build a deck-builder, an AI assistant, or a tutor mode without a database of cards underneath. Phase 1 is the foundation everything else stands on. It also produces something genuinely useful on its own: a calm, searchable view of my real collection. The 1A / 1B split keeps the first deploy moment as early and lean as possible — every shipped stage matters for motivation and feedback — while letting the safety net and polish layer arrive deliberately rather than being skipped in a rush to ship.
 
 ---
 
@@ -122,7 +138,7 @@ A few things sit deliberately outside the roadmap, either because they're perman
 
 There are deliberately no dates on the phases above. This project starts towards the end of bootcamp and is, realistically, a long-running thing — possibly across years, possibly never reaching completion. That's fine. The phases are scope groupings, not calendar commitments.
 
-What matters more than a delivery date is that each phase, on its own, is a complete and useful thing. After Phase 1, I have a calm personal collection database. After Phase 2, a Commander deck-builder. After Phase 3, an AI-assisted deck-builder. Each step is real, ship-ready, and worth the work even if no further step ever happens.
+What matters more than a delivery date is that each phase, on its own, is a complete and useful thing. After Phase 1A, my collection is online and browseable. After Phase 1B, it's polished, secured, and tested. After Phase 2, a Commander deck-builder. After Phase 3, an AI-assisted deck-builder. Each step is real, ship-ready, and worth the work even if no further step ever happens.
 
 ---
 
