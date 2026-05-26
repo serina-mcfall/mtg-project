@@ -1069,7 +1069,7 @@ footer {
   <section id="palette">
     <span class="section-label">Colour System</span>
     <h2 class="section-title">Palette</h2>
-    <p class="section-intro">Every colour resolves through CSS custom properties — the same component picks up either palette at runtime. Tokens land in Phase 1; the light palette below ships properly in Phase 4.</p>
+    <p class="section-intro">Every colour resolves through CSS custom properties — the same component picks up either palette at runtime. Tokens land in Phase 1B; the light palette below ships properly in Phase 4.</p>
 
     <div class="palette-group">
       <div class="palette-group-title">Surface &amp; Ink</div>
@@ -1318,10 +1318,17 @@ footer {
 
     <div class="phase-grid">
       <div class="phase-card">
-        <div class="phase-number">Phase 1</div>
+        <div class="phase-number">Phase 1A</div>
         <div class="phase-content">
-          <h4>Foundation &amp; theme architecture</h4>
-          <p>CSS variables defined; dark candlelit palette as default; typography pair loaded; sample card display component; navigation; calm layout primitives. Theme tokens ready for the eventual swap.</p>
+          <h4>Foundation &amp; display chrome</h4>
+          <p>Dark candlelit palette applied as the default; typography pair loaded; sample card display component; navigation; calm layout primitives. Enough visual identity to ship the MVP, but the theme architecture beneath stays scrappy.</p>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">Phase 1B</div>
+        <div class="phase-content">
+          <h4>Theme architecture &amp; polish</h4>
+          <p>CSS variables formalised; theme tokens ready for the eventual swap; dark theme tuned for contrast, hierarchy, and accessibility — meets WCAG, not just "works."</p>
         </div>
       </div>
       <div class="phase-card">
@@ -1342,7 +1349,7 @@ footer {
         <div class="phase-number">Phase 4</div>
         <div class="phase-content">
           <h4>Morning library light palette</h4>
-          <p>The light theme palette ships properly. The architecture has been in place since Phase 1, so this becomes a content release, not a rebuild. Toggle lives in user settings or header.</p>
+          <p>The light theme palette ships properly. The architecture has been in place since Phase 1B, so this becomes a content release, not a rebuild. Toggle lives in user settings or header.</p>
         </div>
       </div>
       <div class="phase-card">

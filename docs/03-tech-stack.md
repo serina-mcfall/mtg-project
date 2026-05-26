@@ -141,7 +141,7 @@ A companion library for testing React components by their accessibility tree rat
 
 **Why:** Tests written against what the user sees (and what assistive technology sees) are more durable than tests written against implementation. The library's approach reinforces the accessibility-first principle baked into the rest of the architecture — if a test passes, the feature is reachable by keyboard and screen reader.
 
-Testing infrastructure lands as **Phase 1 scaffolding**, not a later addition. Even minimal initial coverage means Phase 2 and beyond have somewhere to add tests as features arrive, rather than bolting testing on after the fact.
+Testing infrastructure lands as **Phase 1B scaffolding**, not a later addition. The Phase 1A MVP can ship without an automated test suite, but 1B's polish pass is where Vitest and React Testing Library come in — early enough that Phase 2 and beyond have somewhere to add tests as features arrive, rather than bolting testing on after the fact.
 
 ---
 
@@ -197,7 +197,7 @@ Every choice above either reinforces an explicit design principle of the project
 - **Radix UI** for accessibility primitives, because faking accessibility is worse than no accessibility
 - **Andika** for body text, because the body font is where accessibility is felt most
 - **CSS Modules** rather than utility-first frameworks, because the design voice is bespoke
-- **CSS variables** for the eventual light/dark theme swap, baked in from Phase 1 so Phase 4 is a swap not a rewrite
+- **CSS variables** for the eventual light/dark theme swap, baked in from Phase 1B so Phase 4 is a swap not a rewrite
 - **Postgres text arrays** for `color_identity`, because Commander's legality rule needs subset queries to be fast
 - **Anthropic-only Phase 3 / OpenRouter Phase 5** for AI, because shipping focused beats shipping generic
 - **TypeScript + Prisma + Supabase** as the data spine, because end-to-end types make the schema knowable to the rest of the system

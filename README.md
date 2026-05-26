@@ -7,7 +7,7 @@
 
 ## Status
 
-**Concept stage.** Design and architecture decisions are documented in [`docs/`](./docs/), and a working visual concept plan lives at [`design/design-system.html`](./design/design-system.html). Implementation has not yet started — Phase 1 begins once the planning artefacts are complete.
+**Concept stage.** Design and architecture decisions are documented in [`docs/`](./docs/), and a working visual concept plan lives at [`design/design-system.html`](./design/design-system.html). Implementation has not yet started — Phase 1A begins once the planning artefacts are complete.
 
 See [`docs/02-roadmap.md`](./docs/02-roadmap.md) for the full phased build plan.
 
@@ -26,7 +26,7 @@ The same principle applies across the whole interface — **only one layer is lo
 ## Planned features by phase
 
 **Phase 1 — Foundation and collection**
-Scryfall ingest pipeline, full database schema, collection management with CSV import from Moxfield, filter-first card browsing, theme architecture scaffolding (dark mode default), authentication.
+Ships in two deployable stages. **1A** — Scryfall ingest pipeline, full database schema, collection management with CSV import from Moxfield, filter-first card browsing, and authentication. The lean MVP, deployed and usable. **1B** — Theme architecture scaffolding (dark mode default; light theme deferred to Phase 4), testing infrastructure, polished dark theme with accessibility audit.
 
 **Phase 2 — Deck building**
 Commander-first deck builder with automatic colour-identity constraints, format-legal filtering, deck visualisations (mana curve, type breakdown, colour distribution), commander spotlight for browsing and researching legendary creatures.

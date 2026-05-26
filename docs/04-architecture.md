@@ -13,7 +13,7 @@ Five components form the backbone of the app, with one more added in Phase 3:
 - **Next.js application.** The whole frontend plus its backend. Server Components render data-heavy pages without shipping the data to the client; Client Components handle interactivity; API routes serve mutations. Deployed to Vercel.
 - **PostgreSQL database (Supabase).** Single source of truth for cards, collection, decks, users. Hosts the `pgsodium` extension for Phase 3 BYOK encryption, plus GIN indexes for array-subset queries and `tsvector` indexes for full-text search.
 - **Supabase Auth.** User authentication and session management. The Next.js app calls Supabase for sign-in and sign-up; sessions are validated server-side on every request that touches user data.
-- **Scryfall ingest worker.** A scheduled job that fetches Scryfall's bulk data file, parses it, and upserts into Postgres. Runs daily. Not a separate service in early phases — implemented as a Vercel Cron-triggered API route in Phase 1.
+- **Scryfall ingest worker.** A scheduled job that fetches Scryfall's bulk data file, parses it, and upserts into Postgres. Runs daily. Not a separate service in early phases — implemented as a Vercel Cron-triggered API route in Phase 1A.
 - **Scryfall (external).** The source of truth for card data. Bulk endpoint for the catalogue, regular API for things that change frequently (prices, new releases between bulk drops).
 - **AI Orchestrator (Phase 3+).** A backend module inside the Next.js app responsible for composing prompts, calling Anthropic, parsing structured output, and validating it against deck-building rules. Decrypts the user's BYOK Anthropic key per-request and never persists the plaintext.
 
@@ -27,7 +27,7 @@ The whole production footprint is two managed services: Vercel and Supabase. Bot
 
 ---
 
-## Data flow — card browsing (Phase 1)
+## Data flow — card browsing (Phase 1A)
 
 The most common interaction. A user opens a card-browsing page with some filters applied.
 
@@ -43,7 +43,7 @@ Why this matters: card-browsing pages would be expensive if every card object we
 
 ---
 
-## Data flow — Scryfall ingest (Phase 1)
+## Data flow — Scryfall ingest (Phase 1A)
 
 Periodic, server-only, no user involvement.
 
@@ -57,7 +57,7 @@ Why this matters: rebuilding the catalogue from scratch each time would be slow 
 
 ---
 
-## Data flow — collection mutation (Phase 1)
+## Data flow — collection mutation (Phase 1A)
 
 User adds a card to their collection from the browser.
 
