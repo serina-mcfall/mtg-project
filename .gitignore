@@ -49,3 +49,6 @@ next-env.d.ts
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# Claude Code local state (worklog, session journal, settings)
+.claude/
