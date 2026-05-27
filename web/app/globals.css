@@ -1,0 +1,87 @@
+/*
+ * Design tokens lifted from design/design-system.html.
+ * Phase 1A: hardcoded var() definitions on :root[data-theme="dark"].
+ * Phase 1B will formalise these into the full theme architecture
+ * (light palette + token system).
+ */
+
+:root[data-theme='dark'] {
+  --bg: #1a1410;
+  --bg-surface: #221a14;
+  --bg-elevated: #2a2018;
+  --bg-deep: #110d09;
+  --ink: #f0e3cd;
+  --ink-muted: #b8a78a;
+  --ink-tertiary: #8a7960;
+  --border: #3d2f23;
+  --border-strong: #5a4636;
+  --accent-gold: #c4a059;
+  --accent-gold-muted: #8a7240;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --mtg-w: #dccf9d;
+  --mtg-u: #5e8fb8;
+  --mtg-b: #6b5681;
+  --mtg-r: #c97560;
+  --mtg-g: #7ba869;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-andika), sans-serif;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(
+      ellipse at top,
+      rgba(196, 160, 89, 0.04) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      rgba(196, 160, 89, 0.02) 0%,
+      transparent 50%
+    );
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 17px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

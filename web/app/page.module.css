@@ -1,0 +1,31 @@
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px;
+}
+
+.heading {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.subhead {
+  font-family: var(--font-eb-garamond), serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  margin-bottom: 48px;
+  max-width: 56ch;
+  line-height: 1.55;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
