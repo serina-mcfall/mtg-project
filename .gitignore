@@ -52,3 +52,6 @@ next-env.d.ts
 
 # Claude Code local state (worklog, session journal, settings)
 .claude/
+
+# Scryfall snapshot data — regenerable via reference/scryfall/fetch_all.py
+reference/scryfall/*.json
